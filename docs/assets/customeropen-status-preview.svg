@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">CustomerOpen CLI status preview</title>
+  <desc id="desc">A fictional terminal preview showing provider and lead automation status.</desc>
+  <rect width="1200" height="620" rx="18" fill="#111827"/>
+  <rect width="1200" height="54" rx="18" fill="#1f2937"/>
+  <rect y="36" width="1200" height="18" fill="#1f2937"/>
+  <circle cx="28" cy="27" r="8" fill="#ef4444"/>
+  <circle cx="54" cy="27" r="8" fill="#f59e0b"/>
+  <circle cx="80" cy="27" r="8" fill="#22c55e"/>
+  <text x="108" y="34" fill="#d1d5db" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">customeropen — status</text>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22">
+    <text x="40" y="105" fill="#60a5fa">$ python main.py --mode status</text>
+    <text x="40" y="156" fill="#f9fafb">Domain pool</text>
+    <text x="330" y="156" fill="#34d399">ready</text>
+    <text x="40" y="198" fill="#f9fafb">Search provider</text>
+    <text x="330" y="198" fill="#34d399">auto</text>
+    <text x="40" y="240" fill="#f9fafb">Brave / Tavily / Exa</text>
+    <text x="330" y="240" fill="#93c5fd">optional fallback chain</text>
+    <text x="40" y="282" fill="#f9fafb">Firecrawl / Hunter</text>
+    <text x="330" y="282" fill="#93c5fd">optional enrichment</text>
+    <text x="40" y="324" fill="#f9fafb">Final safety check</text>
+    <text x="330" y="324" fill="#34d399">enabled</text>
+    <text x="40" y="366" fill="#f9fafb">Duplicate protection</text>
+    <text x="330" y="366" fill="#34d399">enabled</text>
+    <text x="40" y="408" fill="#f9fafb">SMTP</text>
+    <text x="330" y="408" fill="#fbbf24">configure in .env</text>
+    <text x="40" y="476" fill="#9ca3af">No credentials or customer records are included in this repository.</text>
+    <text x="40" y="526" fill="#60a5fa">$ python main.py --mode dry_run</text>
+    <text x="40" y="568" fill="#34d399">Dry run complete — no email sent.</text>
+  </g>
+</svg>

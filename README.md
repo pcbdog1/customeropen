@@ -1,4 +1,14 @@
-# customeropen
+# CustomerOpen — AI-Powered B2B Lead Generation & Outreach Automation
+
+[![GitHub stars](https://img.shields.io/github/stars/pcbdog1/customeropen?style=social)](https://github.com/pcbdog1/customeropen/stargazers)
+[![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+Discover public B2B hardware prospects, qualify company-domain contacts,
+generate tailored outreach, and run a safety-checked campaign pipeline from one
+local Python project.
+
+![CustomerOpen status preview](docs/assets/customeropen-status-preview.svg)
 
 `customeropen` is a Python workflow for discovering public B2B hardware leads,
 recovering company-domain business contacts, qualifying prospects, drafting
@@ -9,9 +19,36 @@ The repository contains no customer database, credentials, sent history, or
 production output. It is a framework: operators are responsible for lawful
 data collection, outreach authorization, suppression lists, and local rules.
 
+## Features
+
+- Local Excel company-domain pool with CSV/XLSX imports
+- Brave, Tavily, and Exa search-provider fallback
+- Firecrawl website retrieval and optional Hunter domain enrichment
+- Contact, footer, Impressum, legal notice, support, sales, and PDF recovery
+- Hardware qualification and final send safety checks
+- Personalized English outreach draft generation
+- SMTP delivery framework with opt-out enforcement
+- Email, company-domain, and sent-history deduplication
+- Checkpoints, stale-lock recovery, structured logs, and daily reports
+- Dry-run, live-test, status, collection, import, recovery, and daily-loop modes
+
 ## Architecture
 
-The lead pipeline has three layers:
+The lead pipeline has three acquisition layers followed by qualification and
+delivery controls:
+
+```mermaid
+flowchart LR
+    A[Local domain pool] --> D[Company-domain verification]
+    B[Brave / Tavily / Exa] --> D
+    C[Firecrawl / Hunter] --> E[Public business email recovery]
+    D --> E
+    E --> F[Hardware qualification]
+    F --> G[Final Send Safety Check]
+    G --> H[Draft queue]
+    H --> I[SMTP delivery]
+    I --> J[Sent log and daily report]
+```
 
 1. **Local company domain pool**: imported or collected domains are stored in
    `outputs/company_domain_pool.xlsx` and processed before external providers.
@@ -35,13 +72,20 @@ writes a daily report.
 ## Installation
 
 ```bash
-git clone https://github.com/YOUR_ACCOUNT/customeropen.git
+git clone https://github.com/pcbdog1/customeropen.git
 cd customeropen
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 cp .env.example .env
+```
+
+Then verify the installation without sending mail:
+
+```bash
+python main.py --mode status
+python main.py --mode dry_run
 ```
 
 On Windows, activate the environment with `.venv\Scripts\activate`.
